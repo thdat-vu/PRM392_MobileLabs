@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/dataTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dữ liệu được hiển thị tại đây"
+        android:textSize="18sp"
+        android:padding="16dp" />
+
+    <Button
+        android:id="@+id/showStringButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tên cửa hàng" />
+
+    <Button
+        android:id="@+id/showIntButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Số cửa hàng" />
+
+    <Button
+        android:id="@+id/showBooleanButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tính hợp pháp" />
+
+    <Button
+        android:id="@+id/showArrayButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Danh sách best seller" />
+
+    <Button
+        android:id="@+id/showEntityButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gạo ST25" />
+
+    <Button
+        android:id="@+id/showBundleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bundle gạo" />
+</LinearLayout>

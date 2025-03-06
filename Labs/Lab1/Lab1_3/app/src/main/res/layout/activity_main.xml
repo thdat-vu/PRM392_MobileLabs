@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="#3b5998">
+
+    <ImageView
+        android:id="@+id/facebookLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:contentDescription="Facebook Logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/facebook_logo" />
+
+    <TextView
+        android:id="@+id/languageSelection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="English • Change"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:layout_below="@id/facebookLogo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp" />
+
+    <EditText
+        android:id="@+id/emailInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email or Phone"
+        android:background="#FFFFFF"
+        android:padding="10dp"
+        android:layout_below="@id/languageSelection"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="10dp"
+        android:textColor="#000000" />
+
+    <EditText
+        android:id="@+id/passwordInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:layout_below="@id/emailInput"
+        android:background="#FFFFFF"
+        android:padding="10dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="20dp"
+        android:textColor="#000000"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LOG IN"
+        android:backgroundTint="#2C549D"
+        android:textColor="#FFFFFF"
+        android:layout_below="@id/passwordInput"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Sign Up and Forgot Password Links -->
+    <LinearLayout
+        android:id="@+id/signUpAndForgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/loginButton"
+        android:gravity="center"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/signUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign Up for Facebook"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:layout_marginBottom="10dp" />
+
+        <TextView
+            android:id="@+id/forgotPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forgot Password?"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:layout_marginBottom="10dp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/help"
+        android:layout_width="26dp"
+        android:layout_height="28dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="120dp"
+        android:layout_toEndOf="@+id/signUpAndForgotPassword"
+        android:contentDescription="Help Icon"
+        android:src="@drawable/help_icon" />
+
+
+</RelativeLayout>
