@@ -15,7 +15,7 @@ public interface TraineeService {
     @GET(TRAINEES)
     Call<Trainee[]> getTrainees();
     @GET(TRAINEES + "/{id}")
-    Call<Trainee[]> getTrainees(@Path("id") Object id);
+    Call<Trainee> getTrainees(@Path("id") Object id);
 
 
     @POST(TRAINEES)
@@ -25,6 +25,6 @@ public interface TraineeService {
     Call<Trainee> updateTrainees(@Path("id") Object id, @Body Trainee trainee);
 
     @DELETE(TRAINEES + "/{id}")
-    Call<Void> deleteTrainees(@Path("id") Object id);
+    Call<Trainee> deleteTrainees(@Path("id") Object id);
 
 }
