@@ -33,12 +33,17 @@ public class EditPersonActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_person_edit);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        // Add null check before accessing ActionBar
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         initViews();
 
         mDb = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "app-database").build();
+                        AppDatabase.class, "app-database")
+                .allowMainThreadQueries() // Add this for development
+                .build();
 
         intent = getIntent();
         if (intent != null && intent.hasExtra(Constants.UPDATE_Person_Id)) {
@@ -47,8 +52,14 @@ public class EditPersonActivity extends AppCompatActivity {
             AppExecutors.getInstance().diskIO().execute(new Runnable() {
                 @Override
                 public void run() {
-                    Person person = mDb.personDao().loadPersonById(mPersonId);
-                    populateUI(person);
+                    final Person person = mDb.personDao().loadPersonById(mPersonId);
+                    // Use runOnUiThread to update UI elements
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            populateUI(person);
+                        }
+                    });
                 }
             });
         }
@@ -67,18 +78,34 @@ public class EditPersonActivity extends AppCompatActivity {
         });
     }
 
+    // In the onSaveButtonClicked method
     public void onSaveButtonClicked() {
-        final Person person = new Person(
-                etFirstName.getText().toString(),
-                etLastName.getText().toString()
-        );
-
+        // Get the text from the EditText fields
+        String firstName = etFirstName.getText().toString().trim();
+        String lastName = etLastName.getText().toString().trim();
+        
+        // Validate that both fields are filled
+        if (firstName.isEmpty()) {
+            etFirstName.setError("First name is required");
+            return;
+        }
+        
+        if (lastName.isEmpty()) {
+            etLastName.setError("Last name is required");
+            return;
+        }
+        
+        // Create a new person with the validated input
+        final Person person = new Person(firstName, lastName);
+    
         AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override
             public void run() {
-                if (intent.hasExtra(Constants.UPDATE_Person_Id)) {
+                if (!intent.hasExtra(Constants.UPDATE_Person_Id)) {
+                    // This is a new person, insert it
                     mDb.personDao().insert(person);
                 } else {
+                    // This is an existing person, update it
                     person.setUid(mPersonId);
                     mDb.personDao().update(person);
                 }

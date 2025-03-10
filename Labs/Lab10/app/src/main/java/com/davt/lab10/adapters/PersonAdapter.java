@@ -1,6 +1,5 @@
 package com.davt.lab10.adapters;
 
-
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -31,14 +30,14 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.MyViewHold
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(context).inflate(com.davt.lab10.R.layout.person_item, viewGroup, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.person_item, viewGroup, false);
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull PersonAdapter.MyViewHolder myViewHolder, int i) {
-        myViewHolder.name.setText(mPersonList.get(i).getFirstName());
-        myViewHolder.email.setText(mPersonList.get(i).getLastName());
+        myViewHolder.firstName.setText(mPersonList.get(i).getFirstName());
+        myViewHolder.lastName.setText(mPersonList.get(i).getLastName());
     }
 
     @Override
@@ -59,14 +58,14 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.MyViewHold
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView name, email;
+        TextView firstName, lastName;
         ImageView editImage;
 
         MyViewHolder(@NonNull final View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.etFirstName);
-            email = itemView.findViewById(R.id.etLastName);
-           // editImage = itemView.findViewById(R.id.ivEdit);
+            firstName = itemView.findViewById(R.id.tvFirstName);
+            lastName = itemView.findViewById(R.id.tvLastName);
+            editImage = itemView.findViewById(R.id.ivEdit);
 
             editImage.setOnClickListener(new View.OnClickListener() {
                 @Override

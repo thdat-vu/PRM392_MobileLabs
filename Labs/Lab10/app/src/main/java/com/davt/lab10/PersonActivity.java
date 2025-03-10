@@ -47,7 +47,10 @@ public class PersonActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
 
         mDb = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "app-database").build();
+        AppDatabase.class, "app-database")
+        .allowMainThreadQueries() // Add this for development
+        .fallbackToDestructiveMigration() // Add this to handle schema changes
+        .build();
 
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback( 0,
                  ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {

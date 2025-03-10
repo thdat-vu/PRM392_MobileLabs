@@ -1,12 +1,13 @@
 package com.davt.lab10.executors;
 
+import android.os.Handler;
 import android.os.Looper;
 
 import androidx.annotation.NonNull;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
-import java.util.logging.Handler;
+
 
 public class AppExecutors {
 
@@ -26,9 +27,11 @@ public class AppExecutors {
     public static AppExecutors getInstance() {
         if (sInstance == null) {
             synchronized (LOCK) {
-                sInstance = new AppExecutors(Executors.newSingleThreadExecutor(),
-                        Executors.newFixedThreadPool(3),
-                        new MainThreadExecutor());
+                if (sInstance == null) {
+                    sInstance = new AppExecutors(Executors.newSingleThreadExecutor(),
+                            Executors.newFixedThreadPool(3),
+                            new MainThreadExecutor());
+                }
             }
         }
         return sInstance;
