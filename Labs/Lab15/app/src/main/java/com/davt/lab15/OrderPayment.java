@@ -67,6 +67,7 @@ public class OrderPayment extends AppCompatActivity {
 
                 if (code.equals("1")) {
                     String token = data.getString("zp_trans_token");
+                    // Make sure this URL matches your intent filter scheme and host
                     ZaloPaySDK.getInstance().payOrder(OrderPayment.this, token, "demozpdk://app", new PayOrderListener() {
                         @Override
                         public void onPaymentSucceeded(String s, String s1, String s2) {
@@ -85,8 +86,9 @@ public class OrderPayment extends AppCompatActivity {
 
                         @Override
                         public void onPaymentError(ZaloPayError zaloPayError, String s, String s1) {
+                            Log.e("ZaloPay Error", "Error: " + zaloPayError.toString() + " | " + s + " | " + s1);
                             Intent intent3 = new Intent(OrderPayment.this, PaymentNotification.class);
-                            intent3.putExtra("result", "Lỗi thanh toán");
+                            intent3.putExtra("result", "Lỗi thanh toán: " + zaloPayError.toString());
                             startActivity(intent3);
                         }
                     });
@@ -101,5 +103,12 @@ public class OrderPayment extends AppCompatActivity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         ZaloPaySDK.getInstance().onResult(intent);
+    }
+
+    // Add this method to handle activity results
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        ZaloPaySDK.getInstance().onActivityResult(requestCode, resultCode, data);
     }
 }
