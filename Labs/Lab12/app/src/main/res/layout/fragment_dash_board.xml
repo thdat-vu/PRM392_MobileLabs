@@ -20,14 +20,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Updated button to match the image - centered in the screen with a circular shape -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_upp_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Up Number"
+        android:text="UP NUMBER"
+        android:padding="16dp"
+        android:background="@drawable/circle_button_background"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_dashboard" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
