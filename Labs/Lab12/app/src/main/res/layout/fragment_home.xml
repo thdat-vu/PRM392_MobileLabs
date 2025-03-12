@@ -7,8 +7,10 @@
 
     <TextView
         android:id="@+id/textHome"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="319dp"
+        android:layout_height="609dp"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:text="Hello" />
 
 </FrameLayout>
