@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Lab8</string>
+    <string name="send_notification">SEND NOTIFICATION</string>
+    <string name="clear_all">CLEAR ALL</string>
+    <string name="notification_title">Title push notification</string>
+    <string name="notification_message">Message push notification</string>
+    <string name="send_custom_notification">SEND CUSTOM NOTIFICATION</string>
+</resources>
